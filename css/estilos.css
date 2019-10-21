@@ -3,6 +3,7 @@
     height: 50vw;
     background-color: lightgrey;
     display: block;
+    margin: auto;
 }
 .celda{
     width: 16vw;
