@@ -1,0 +1,40 @@
+#tablero{
+    width: 50vw;
+    height: 50vw;
+    background-color: lightgrey;
+    display: block;
+}
+.celda{
+    width: 16vw;
+    height: 16vw;
+    float: left;
+    margin: 0.33vw;
+}
+#c00 ,#c10 , #c20, #c01 ,#c11, #c21{
+    margin-right: 0vw;
+    border-right: 0.33vw solid black;
+
+}
+#c00 ,#c01 , #c02, #c10 ,#c11, #c12{
+    margin-bottom: 0vw;
+    border-bottom: 0.33vw solid black;
+}
+#c02 ,#c12 , #c22, #c01 ,#c11, #c21{
+    margin-left: 0vw;
+    border-left: 0.33vw solid black;
+
+}
+#c20 ,#c21 , #c22, #c10 ,#c11, #c12{
+    margin-top: 0vw;
+    border-top: 0.33vw solid black;
+}
+p{
+    height: 16vw;
+    font-size: 14vw;
+    margin:auto;
+    text-align: center;
+    line-height: 16vw;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+}
