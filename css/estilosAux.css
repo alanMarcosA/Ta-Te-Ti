@@ -1,0 +1,13 @@
+@media only screen and (max-width: 600px){
+    #tablero{
+        width: 89vw;
+        height: 89vw;
+    }
+    .celda{
+        width: 29vw;
+        height: 29vw;
+    }
+    p{
+        line-height: 29vw;
+    }
+}
