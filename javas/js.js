@@ -36,11 +36,22 @@ function analizarVictoria(turn){
         gano=true
     }
     if(gano){
-        alert("gano el jugador " + turn);
+        alert("gano el jugador " + turn)
+        nuevo_juego()
+    }else if(tableroLleno(tablero)){
+        alert("empate")
         nuevo_juego()
     }
 }
-
+function tableroLleno(tablero){
+    var lleno= true
+    for (let i = 0; i < tablero.length; i++) {
+        if(tablero[i].innerText===""){
+            lleno=false
+        }
+        
+    }
+    return lleno;
+}
 turno="x"
 var contadorJugadas=0;
-var tablero=traerTablero();
