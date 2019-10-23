@@ -39,6 +39,7 @@ p{
 body{
     font-family: 'Poppins', sans-serif;
     cursor: default;
+    text-align: center;
 }
 #boton{
     border: 1px solid green;
@@ -46,5 +47,5 @@ body{
     border-radius: 5px;
     margin-bottom: 3vw;
     display: inline-block;
-    text-align: center;
+
 }
