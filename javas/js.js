@@ -40,21 +40,7 @@ function analizarVictoria(turn){
         nuevo_juego()
     }
 }
-function traerTablero(){
-    var celda=document.querySelectorAll("p")
-    var array=[]
-    for (let i = 0; i < celda.length; i++) {
-        array.push(celda[i].innerText)
-        }
-    return array
-}
-var estadoActual={
-    table:["","","","","","","","",""]
-    
-}
+
 turno="x"
 var contadorJugadas=0;
 var tablero=traerTablero();
-function creador(){
-
-}
