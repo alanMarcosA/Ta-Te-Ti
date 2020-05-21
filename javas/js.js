@@ -1,3 +1,12 @@
+var turno = "X";
+var cantPlayer = prompt("jugadores(1 o 2)");
+var player;
+if (cantPlayer == 1) {
+  player = prompt("juega con X o O");
+}
+if (player != turno) {
+  playBot(`${statusTable()}/${turno}`);
+}
 function nuevo_juego() {
   let celda = document.querySelectorAll("p");
   for (let i = 0; i < celda.length; i++) {
@@ -17,6 +26,10 @@ function jugar(pos) {
       celda[pos].innerText = "O";
       analizarVictoria(turno);
       turno = "X";
+    }
+    console.log(cantPlayer + " " + turno + player);
+    if (cantPlayer == 1 && turno != player) {
+      playBot(`${statusTable()}/${turno}`);
     }
   }
 }
@@ -69,4 +82,28 @@ function tableroLleno(tablero) {
   return lleno;
 }
 
-turno = "x";
+async function playBot(jugada) {
+  let respuesta = await fetch(
+    `https://stujo-tic-tac-toe-stujo-v1.p.rapidapi.com/${jugada}`,
+    {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "stujo-tic-tac-toe-stujo-v1.p.rapidapi.com",
+        "x-rapidapi-key": "311e92868amshdcc60eef47807adp12e4c0jsnf933b52d72dc",
+      },
+    }
+  );
+  let res = await respuesta.json();
+  console.log(res);
+  jugar(res.recommendation);
+}
+
+function statusTable() {
+  let celda = document.querySelectorAll("p");
+  let tablero = "";
+  for (let i = 0; i < celda.length; i++) {
+    tablero += celda[i].innerText != "" ? celda[i].innerText : "-";
+  }
+  console.log(tablero);
+  return tablero;
+}
