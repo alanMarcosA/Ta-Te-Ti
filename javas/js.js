@@ -54,7 +54,7 @@ function analizarVictoria(turn) {
   if (gano) {
     alert(`gano el jugador ${turn}`);
     nuevo_juego();
-  } else if (tablero.find(tableroLleno2(tablero))) {
+  } else if (tableroLleno(tablero)) {
     alert("empate");
     nuevo_juego();
   }
@@ -68,7 +68,5 @@ function tableroLleno(tablero) {
   }
   return lleno;
 }
-function tableroLleno2(value) {
-  return value.innerText === "";
-}
+
 turno = "x";
