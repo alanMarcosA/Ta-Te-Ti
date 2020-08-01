@@ -1,34 +1,33 @@
 var turno = "X";
-var cantPlayer = prompt("jugadores(1 o 2)");
-var player;
-if (cantPlayer == 1) {
-  player = prompt("juega con X o O");
-}
-if (player != turno) {
-  playBot(`${statusTable()}/${turno}`);
-}
+var cantPlayer = 1;
+var player = "X";
+nuevo_juego();
 function nuevo_juego() {
   let celda = document.querySelectorAll("p");
   for (let i = 0; i < celda.length; i++) {
     celda[i].innerText = "";
   }
+  if (player != turno && cantPlayer == 1) {
+    playBot(`${statusTable()}/${turno}`);
+  }
 }
 function jugar(pos) {
   let celda = document.querySelectorAll("p");
+  let estado;
   if (celda[pos].innerText != "") {
     alert("poscicion invalida");
   } else {
     if (turno === "X") {
       celda[pos].innerText = "X";
-      analizarVictoria(turno);
+      estado = analizarVictoria(turno);
       turno = "O";
     } else {
       celda[pos].innerText = "O";
-      analizarVictoria(turno);
+      estado = analizarVictoria(turno);
       turno = "X";
     }
-    console.log(cantPlayer + " " + turno + player);
-    if (cantPlayer == 1 && turno != player) {
+    if (estado) nuevo_juego();
+    if (cantPlayer == 1 && turno != player && !estado) {
       playBot(`${statusTable()}/${turno}`);
     }
   }
@@ -66,11 +65,11 @@ function analizarVictoria(turn) {
   }
   if (gano) {
     alert(`gano el jugador ${turn}`);
-    nuevo_juego();
   } else if (tableroLleno(tablero)) {
     alert("empate");
-    nuevo_juego();
+    gano = true;
   }
+  return gano;
 }
 function tableroLleno(tablero) {
   let lleno = true;
@@ -106,4 +105,17 @@ function statusTable() {
   }
   console.log(tablero);
   return tablero;
+}
+
+function jugadores() {
+  var boton = document.querySelector("#players");
+  if (cantPlayer == 1) {
+    boton.innerText = "2 jugadores";
+    cantPlayer = 2;
+    nuevo_juego();
+  } else {
+    boton.innerText = "1 jugador";
+    cantPlayer = 1;
+    nuevo_juego();
+  }
 }
